@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     # Install Python, SQLite and pip
     sudo apt-get install -y python3-dev python-pip
     #postgres install??
-
+    sudo apt-get install postgresql postgresql-contrib
     # Upgrade pip to the latest version.
     sudo pip install --upgrade pip
     # Install and configure python virtualenvwrapper.
