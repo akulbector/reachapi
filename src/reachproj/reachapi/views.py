@@ -5,25 +5,10 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveUpdateAPIView, ListAPIView
 from rest_framework import viewsets
-from rest_framework import permissions
 from rest_framework.response import Response
 from .serializers import PlaceSerializer, ProfileSerializer, RidePostingSerializer, RideRequestSerializer, RidePostingAcceptSerializer
-
+from .permissions import IsOwnerOrReadOnly
 from .models import RidePosting, RideRequest, Profile
-class IsOwnerOrReadOnly(permissions.BasePermission):
-    """
-    Object-level permission to only allow owners of an object to edit it.
-    Assumes the model instance has an `owner` attribute.
-    """
-
-    def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        # Instance must have an attribute named `owner`.
-        return obj.user == request.user
 
 # Create your views here.
 class PlaceCreateView(CreateAPIView):
