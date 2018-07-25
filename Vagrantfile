@@ -26,6 +26,9 @@ Vagrant.configure("2") do |config|
     sudo apt-get install -y python3-dev python-pip
     #postgres install??
     sudo apt-get install postgresql postgresql-contrib
+
+    sudo apt install gdal-bin python-gdal python3-gdal
+    
     # Upgrade pip to the latest version.
     sudo pip install --upgrade pip
     # Install and configure python virtualenvwrapper.
