@@ -22,6 +22,11 @@ class RidePostingSerializer(serializers.ModelSerializer):
         fields = ('__all__')
         #fields = ('dest','start','user','date','time_min','time_max','price','seats','seats_left','description','confirmed_riders','potential_riders','stops')
 
+class RidePostingBidSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RidePosting
+        fields = ('potential_riders')
+        
 class RidePostingAcceptSerializer(serializers.ModelSerializer):
     class Meta:
         model = RidePosting
