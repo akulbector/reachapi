@@ -35,7 +35,7 @@ class RidePostingSerializer(serializers.ModelSerializer):
 class RidePostingOfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = RidePosting
-        fields = ('potential_riders')
+        fields = ('offered_riders')
         
 class RidePostingAcceptSerializer(serializers.ModelSerializer):
     class Meta:
