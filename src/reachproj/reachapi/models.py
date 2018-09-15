@@ -43,7 +43,7 @@ class RidePosting(models.Model):
 
     confirmed_riders = models.ManyToManyField(User, related_name = "Rides", blank = True)
     desired_riders = models.ManyToManyField(User, related_name = "Riders_desirerd", blank = True)
-    potential_riders = models.ManyToManyField(User, related_name = "Ride_Offers", blank = True)
+    offered_riders = models.ManyToManyField(User, related_name = "Ride_Offers", blank = True)
 
     stops = ArrayField(base_field=models.CharField(max_length=30), size = 100,blank = True)
 
