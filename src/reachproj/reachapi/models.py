@@ -42,6 +42,7 @@ class RidePosting(models.Model):
     seats_left = models.IntegerField(default=0)
 
     confirmed_riders = models.ManyToManyField(User, related_name = "Rides", blank = True)
+    desired_riders = models.ManyToManyField(User, related_name = "Riders_desirerd", blank = True)
     potential_riders = models.ManyToManyField(User, related_name = "Ride_Offers", blank = True)
 
     stops = ArrayField(base_field=models.CharField(max_length=30), size = 100,blank = True)
@@ -66,6 +67,8 @@ class RideRequest(models.Model):
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE, verbose_name= "The rider taking the ride", related_name= "riderrequests",editable=False) # check related_name. Is supposed to create a reverse relationship where riderrequests.all will return all rider all instances of RideRequests it is linked to.
     #flexibleTime = models.BooleanField(default= False)
     #currentlyRequestedList = models.ManyToManyField(null=True, blank=True, symmetrical= False)
+    resquested_drivers = models.ManyToManyField(User, related_name = "Drivers_desired", blank = True)
+    offered_drivers = models.ManyToManyField(User, related_name = "Drivers_offered", blank = True)
     requestCompleted = models.BooleanField(default=False)
 
     def __str__(self):
