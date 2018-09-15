@@ -69,7 +69,7 @@ class RideRequest(models.Model):
     #currentlyRequestedList = models.ManyToManyField(null=True, blank=True, symmetrical= False)
     resquested_drivers = models.ManyToManyField(User, related_name = "Drivers_desired", blank = True)
     offered_drivers = models.ManyToManyField(User, related_name = "Drivers_offered", blank = True)
-    requestCompleted = models.BooleanField(default=False)
+    request_completed = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.dest + "to" + self.start + "by" + self.user + "on" + self.date + "at" + self.timeInRange)
