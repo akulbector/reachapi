@@ -56,8 +56,14 @@ class RidePostingRUDAPIView(RetrieveUpdateDestroyAPIView):
 class RidePostingAcceptView(RetrieveUpdateAPIView):
     queryset = RidePosting.objects.all()
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)#user must be a requested rider by the driver
     serializer_class = RidePostingAcceptSerializer
+    
+class RidePostingOfferView(RetrieveUpdateAPIView):
+    queryset = RidePosting.objects.all()
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = RidePostingOfferSerializer
 
 class RideRequestListView(ListAPIView):
     queryset = RideRequest.objects.all()
@@ -77,6 +83,18 @@ class RideRequestRUDAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
     serializer_class = RideRequestSerializer
 
+class RideRequestAcceptView(RetrieveUpdateAPIView):
+    queryset = RidePosting.objects.all()
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)#user must be a requested driver by the rider
+    serializer_class = RideRequestAcceptSerializer
+    
+class RideRequestOfferView(RetrieveUpdateAPIView):
+    queryset = RidePosting.objects.all()
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = RideRequestOfferSerializer    
+    
 class ProfileListView(ListAPIView):
     queryset = Profile.objects.all()
     authentication_classes = (SessionAuthentication, BasicAuthentication)
